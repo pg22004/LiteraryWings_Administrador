@@ -5,29 +5,77 @@
 @inject ILocalStorageService _localStorageService
 @inject HttpClient Http
 
-<MudImage ObjectFit="ObjectFit.Contain" Src="/images/LogoC.png" Width="200" Height="150" Alt="Swedish Farm House" Elevation="0" Class="rounded-lg ma-4" />
-<MudPaper Class="pa-2 ma-4" Elevation="0">
-    <EditForm Model="@user" OnValidSubmit="OnValidSubmit">
-        <DataAnnotationsValidator />
-        <MudGrid>
-            <MudItem xs="12">
-                <MudTextField Label="Usuario" Class="mt-3"
-                @bind-Value="user.Login" For="@(() => user.Login)" />
-            </MudItem>
-            <MudItem xs="12">
-                <MudTextField Label="Clave" Class="mt-3"
-                @bind-Value="user.Password" For="@(() => user.Password)" InputType="InputType.Password" />
-            </MudItem>
-            <MudItem xs="12">
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
-            </MudItem>
-        </MudGrid>
-    </EditForm>
-    @if (showLeaveAlert)
-    {
-        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se reconocen las credenciales ingresadas.</MudAlert>
-    }
-</MudPaper>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="page">
+    <div class="container2">
+        <div class="left">
+            <div class="login">Login</div>
+            <div class="eula">
+                Ingrese sus credenciales para iniciar sesión.
+            </div>
+        </div>
+        <div class="right">
+            <div class="right2">
+                <EditForm Model="@user" OnValidSubmit="OnValidSubmit">
+                    <DataAnnotationsValidator />
+                    <MudGrid>
+                        <MudItem xs="12">
+                            <MudTextField Label="Usuario" Class="mt-3"
+                                          @bind-Value="user.Login" For="@(() => user.Login)" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField Label="Clave" Class="mt-3"
+                                          @bind-Value="user.Password" For="@(() => user.Password)" InputType="InputType.Password" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
+                        </MudItem>
+                    </MudGrid>
+                </EditForm>
+                @if (showLeaveAlert)
+                {
+                    <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se reconocen las credenciales ingresadas.</MudAlert>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
 

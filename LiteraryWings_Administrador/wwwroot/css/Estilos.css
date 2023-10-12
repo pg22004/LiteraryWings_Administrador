@@ -1,1 +1,203 @@
-﻿
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+* {
+    margin: 0;
+    font-family: "poppins";
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colores */
+    --cian-oscuro: #00415A;
+    --cian: #00B8FF;
+    --cian-claro: #3BC9FF;
+    --blanco: #fff;
+    --negro: #000;
+    --celeste-claro: #00FFDD;
+    --light-red: #ff0022;
+    --azul-magenta: #0404e2;
+    --naranja-claro: #fb5b17;
+    --verde-cian: #00ff7f;
+    /*Paleta de colores*/
+    --amarillo-oscuro: #030056;
+    --amarillo-medio-oscuro: #01303f;
+    --sombra-amarillo: #02577a;
+    --amarillo-mostaza: #02a9f7;
+    --mostaza-medio-palido: #89d6fb;
+    --mostaza-palido: #d4f0fc;
+    /*Opciones*/
+    --amarillo-claro: #00c2c7;
+    --amarillo-verde: #bfff00;
+}
+
+/*---------------------------------------------Diseños Generales--------------------------------------------*/
+/*---------------------------------------------Diseños Generales--------------------------------------------*/
+
+html, .BodyPrime {
+    background: var(--mostaza-palido);
+}
+
+
+/*-------------------------------------------Estilos de Login--------------------------------------------*/
+@import url('https://rsms.me/inter/inter-ui.css');
+
+.page {
+    background: rgb(0,224,242);
+    background: radial-gradient(circle, rgba(0,224,242,1) 0%, rgba(0,18,255,1) 100%);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    place-content: center;
+}
+
+@media (max-width: 767px) {
+    .page {
+        height: auto;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.container2 {
+    display: flex;
+    height: 320px;
+    margin: 0 auto;
+    width: 640px;
+}
+
+@media (max-width: 767px) {
+    .container2 {
+        flex-direction: column;
+        height: 630px;
+        width: 320px;
+    }
+}
+
+.left {
+    background: var(--negro);
+    height: calc(100% - 40px);
+    top: 20px;
+    position: relative;
+    width: 50%;
+    border-radius: 20px 0 0 20px;
+    color: var(--blanco);
+}
+
+@media (max-width: 767px) {
+    .left {
+        height: 100%;
+        left: 20px;
+        width: calc(100% - 40px);
+        max-height: 270px;
+    }
+}
+
+.login {
+    font-size: 50px;
+    font-weight: 900;
+    margin: 50px 40px 40px;
+}
+
+.eula {
+    color: var(--blanco);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 40px;
+}
+
+.right {
+    background: var(--blanco);
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #ffffff;
+    position: relative;
+    width: 50%;
+    border-radius: 20px;
+}
+
+@media (max-width: 767px) {
+    .right {
+        flex-shrink: 0;
+        height: 100%;
+        width: 100%;
+        max-height: 350px;
+    }
+}
+
+/*.form {
+    margin: 40px;
+    position: absolute;
+}*/
+
+/*label {
+    color: #c2c2c5;
+    display: block;
+    font-size: 14px;
+    height: 16px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+input {
+    background: transparent;
+    border: 0;
+    color: #f2f2f2;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    outline: none !important;
+    width: 100%;
+}
+
+    input::-moz-focus-inner {
+        border: 0;
+    }
+
+#submit {
+    color: #707075;
+    margin-top: 40px;
+    transition: color 300ms;
+}
+
+    #submit:focus {
+        color: #f2f2f2;
+    }
+
+    #submit:active {
+        color: #d0d0d2;
+    }
+*/
+
+
+/*-------------------------------------------Diseño del fantasma de Loading ------------------------------------------------------*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ghost {
+    animation: float 3s ease-out infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translate(0, 20px);
+    }
+}
+
+/* Establece el elemento SVG para que esté inicialmente oculto */
+.elemento {
+    opacity: 0;
+    animation: aparecer 1s ease-in-out 20s forwards;
+}
+
+/* Define la animación para que haga que el elemento aparezca después de 20 segundos */
+@keyframes aparecer {
+    to {
+        opacity: 1;
+    }
+}
