@@ -5,42 +5,36 @@
 @inject ILocalStorageService _localStorageService
 @inject HttpClient Http
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
 <div class="page">
     <div class="container2">
@@ -51,29 +45,43 @@
             </div>
         </div>
         <div class="right">
-            <div class="right2">
+            <div class="">
+
                 <EditForm Model="@user" OnValidSubmit="OnValidSubmit">
                     <DataAnnotationsValidator />
-                    <MudGrid>
-                        <MudItem xs="12">
-                            <MudTextField Label="Usuario" Class="mt-3"
-                                          @bind-Value="user.Login" For="@(() => user.Login)" />
+
+                    <MudGrid Class="right2">
+                        <MudItem xs="10">
+                            <MudTextField Label="Usuario" Class="mt-3 TextUsuario" @bind-Value="user.Login" For="@(() => user.Login)" />
                         </MudItem>
-                        <MudItem xs="12">
-                            <MudTextField Label="Clave" Class="mt-3"
-                                          @bind-Value="user.Password" For="@(() => user.Password)" InputType="InputType.Password" />
+                        <MudItem xs="10">
+                            <MudTextField Label="Clave" Class="mt-3 TextClave" @bind-Value="user.Password" For="@(() => user.Password)" InputType="InputType.Password" />
                         </MudItem>
-                        <MudItem xs="12">
-                            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
-                        </MudItem>
+
+                        <button Type="Submit" Variant="Variant.Filled" Class="BotonLogin" >
+                                Login
+                        </button>
+                       
                     </MudGrid>
+
                 </EditForm>
+            </div>
+        </div>
+    </div>
+    <div class="ConteinerError">
+        <div class="left2">
+
+        </div>
+        <div class="right3">
+            <div class="AlertError">
                 @if (showLeaveAlert)
                 {
-                    <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se reconocen las credenciales ingresadas.</MudAlert>
+                    <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">No se reconocen las credenciales ingresadas.</MudAlert>
+
                 }
             </div>
         </div>
+         
     </div>
 </div>
 
