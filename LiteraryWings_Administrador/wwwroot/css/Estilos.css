@@ -38,8 +38,148 @@ html, .BodyPrime {
     background: var(--mostaza-palido);
 }
 
+.Logo {
+    transform: translateY(0px);
+    width: 30%;
+    height: 100%;
+}
 
-/*-------------------------------------------Estilos de Login--------------------------------------------*/
+@media (max-width: 950px) {
+    .Logo {
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+}
+
+@media (max-width: 350px) {
+    .Logo {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+}
+
+.Titulo-Bienvenida, .Titulo-Autores,
+.Titulo-SugerenciaDetalles, .Titulo-Sugerencia,
+.Titulo-Categorias, .Titulo-Editoriales,
+.Titulo-Libro {
+    text-align: center;
+    font-weight: bold;
+}
+
+.Titulo-Detalles-Imagenes, .Titulo-Galeria-Portada {
+    font-size: 35px;
+    font-weight: 900;
+    color: black;
+    margin-bottom: 20px;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+/*-------------------------------------Diseño de cuadro de Libros------------------------------------*/
+.card1 {
+    width: 275px;
+    height: 375px;
+}
+
+.Ajustarimagen {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 20px;
+    border: 4px solid var(--amarillo-mostaza);
+}
+
+.card-content {
+    width: 275px;
+    height: 375px;
+    transform-style: preserve-3d;
+    transition: transform 3s;
+}
+
+.card1:hover .card-content {
+    transform: rotateY(180deg);
+}
+
+.fondo {
+    width: 275px;
+    height: 355px;
+    background-color: black;
+    font-weight: 400;
+    opacity: 0.65;
+    padding: 16px;
+    border-radius: 20px;
+    transform: translateY(-350px)
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    inset: 1rem;
+    color: white;
+    border-radius: 20px;
+}
+
+.card-front {
+    align-items: center;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    gap: 0.5rem;
+}
+
+.contenedor {
+    display: inline-block;
+}
+
+.card-front {
+    content: "";
+    transform: translateZ(2rem);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 0px;
+    color: var(--Negro);
+}
+
+    .title:hover {
+        color: var(--amarillo-mostaza);
+    }
+
+.sub-fechaLanzamiento {
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    background-color: var(--amarillo-oscuro);
+    margin-left: 140px;
+    margin-top: -29px;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transform: translateZ(3rem);
+}
+
+.AtributosLibro {
+    color: var(--amarillo-claro);
+    font-size: 15px;
+}
+
+/*-------------------------------------------Diseño de Login--------------------------------------------*/
 @import url('https://rsms.me/inter/inter-ui.css');
 
 .page {
@@ -160,11 +300,9 @@ html, .BodyPrime {
 
 .right2 {
     transform: translateX(30px) translateY(35px);
-    /*background: var(--amarillo-claro);*/
 }
 
 .TextUsuario, .TextClave {
-    /*background: var(--naranja-claro);*/
 }
 
 .BotonLogin {
@@ -176,7 +314,6 @@ html, .BodyPrime {
   font-size: 17px;
   border-radius: 1rem;
   border: none;
-  /*position: relative;*/
   background: #100720;
   transition: 0.1s;
 }
@@ -217,7 +354,6 @@ html, .BodyPrime {
     --duration: 3s;
     width: 200px;
     height: 140px;
-    /*position: relative;*/
 }
 
     .loader:before, .loader:after {
