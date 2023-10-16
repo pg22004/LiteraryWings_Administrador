@@ -3,57 +3,64 @@
 @inject NavigationManager NavigationManager
 
 <h1 class="Titulo-Libro">Colección de Libros</h1>
-@*<MudText Typo="Typo.h2" Class="ml">Libros</MudText>*@
 
-<MudTable Items="@libros" Hover="true" Bordered="true" Striped="true">
-    <ToolBarContent>
-        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
-        <MudSpacer />
-    </ToolBarContent>
 
-    <RowTemplate>
-        <div class="row">
-            <div class="col-md-4">
-                <a class="btn" href="@($"/libro/editar/{context.Id}")">
-                    <div class="card1">
-                        <div class="card-content">
-                            <div class="card-front contenedor">
-                                <img class="Ajustarimagen" src="@context.ImagenPortada" alt="@context.Nombre">
-                                <p class="sub-fechaLanzamiento">
-                                    @context.FechaLanzamiento
-                                </p>
-                            </div>
-                            <div class="card-back contenedor">
-                                <img class="Ajustarimagen" src="@context.ImagenIntroduccion" alt="@context.Nombre">
-                                <div class="fondo row ">
-                                    <div class="movie-description">
-                                        <span class="AtributosLibro ">Descripción:  </span>@context.Descripcion
-                                    </div>
-                                    <div class="genre">
-                                        <span class="AtributosLibro ">Nº Páginas:  </span>@context.Paginas
-                                    </div>
-                                    <div class="back-title">
-                                        <span class="AtributosLibro ">Idioma:  </span>@context.Idioma
-                                    </div>
-                                    <div class="release-date">
-                                        <span class="AtributosLibro ">Fecha de publicación:  </span>@context.FechaLanzamiento
-                                    </div>
+<div class="ContenedorBotonAgreLibroAdmin">
+    <div class="">
+        <a href="/libro/agregar">
+            <button class="BotonAgregarLibro">Agregar Libro </button>
+        </a>
+    </div>
+</div>
+
+@*<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
+*@<MudSpacer />
+
+<div class="row">
+    @foreach (var item in libros)
+    {
+        <div class="col-md-4">
+            <a class="btn" href="@($"/libro/editar/{item.Id}")">
+                <div class="card1">
+                    <div class="card-content">
+                        <div class="card-front contenedor">
+                            <img class="Ajustarimagen" src="@item.ImagenPortada" alt="@item.Nombre">
+                            <p class="sub-fechaLanzamiento">
+                                @item.FechaLanzamiento
+                            </p>
+                        </div>
+                        <div class="card-back contenedor">
+                            <img class="Ajustarimagen" src="@item.ImagenIntroduccion" alt="@item.Nombre">
+                            <div class="fondo row ">
+                                <div class="movie-description">
+                                    <span class="AtributosLibro ">Descripción:  </span>@item.Descripcion
+                                </div>
+                                <div class="genre">
+                                    <span class="AtributosLibro ">Nº Páginas:  </span>@item.Paginas
+                                </div>
+                                <div class="back-title">
+                                    <span class="AtributosLibro ">Idioma:  </span>@item.Idioma
+                                </div>
+                                <div class="release-date">
+                                    <span class="AtributosLibro ">Fecha de publicación:  </span>@item.FechaLanzamiento
                                 </div>
                             </div>
-                            <MudTd>
-                                <MudButton Link="@($"/libro/editar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Tertiary" Class="text-center">Editar</MudButton>
-                                <MudButton Link="@($"/libro/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning" Class="text-center">Eliminar</MudButton>
-                            </MudTd>
                         </div>
                     </div>
+                </div>
+            </a>
+            <div class="ContenedorBotonesAdminpeli">
+                <a href="@($"/libro/eliminar/{item.Id}")">
+                    <button class="btn BotonesAdminlibro Eliminar">Eliminar</button>
+                </a>
+                <a href="@($"/libro/editar/{item.Id}")">
+                    <button class="btn BotonesAdminlibro Modificar">Modificar</button>
                 </a>
             </div>
         </div>
-    </RowTemplate>
-    <PagerContent>
-        <MudTablePager />
-    </PagerContent>
-</MudTable>
+    }
+</div>
+
 
 @code {
     private IEnumerable<Libro> libros = new List<Libro>();

@@ -19,6 +19,7 @@
     --azul-magenta: #0404e2;
     --naranja-claro: #fb5b17;
     --verde-cian: #00ff7f;
+
     /*Paleta de colores*/
     --amarillo-oscuro: #030056;
     --amarillo-medio-oscuro: #01303f;
@@ -76,6 +77,34 @@ html, .BodyPrime {
     line-height: 1.5em;
     text-align: center;
 }
+
+
+/*---------------------------------------------------------Boton Añadir pelicula---------------------------------------------*/
+.ContenedorBotonAgreLibroAdmin {
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+
+}
+
+.BotonAgregarLibro {
+    font-size: 1rem;
+    padding: 0.8em 2em;
+    background-color: #000;
+    border: 3px solid var(--amarillo-mostaza);
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bolder;
+    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+    box-shadow: -5px 5px 0px 0px var(--amarillo-mostaza);
+}
+
+.BotonAgregarLibro:hover {
+    transform: translate(5px, -5px);
+}
+
 
 /*-------------------------------------Diseño de cuadro de Libros------------------------------------*/
 .card1 {
@@ -177,6 +206,30 @@ html, .BodyPrime {
 .AtributosLibro {
     color: var(--amarillo-claro);
     font-size: 15px;
+}
+
+.ContenedorBotonesAdminpeli {
+}
+
+.BotonesAdminlibro {
+    background: var(--light-red);
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+}
+
+.BotonesAdminlibro:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+}
+
+.BotonesAdminlibro:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
 }
 
 /*-------------------------------------------Diseño de Login--------------------------------------------*/
