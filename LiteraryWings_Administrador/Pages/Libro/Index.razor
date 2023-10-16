@@ -1,5 +1,75 @@
-﻿<h3>Index</h3>
+﻿@page "/libro/index"
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+
+<MudText Typo="Typo.h2" Class="ml">Libros</MudText>
+
+<MudTable Items="@libros" Hover="true" Bordered="true" Striped="true">
+    <ToolBarContent>
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
+        <MudSpacer />
+        <MudTextField @bind-Value="searchText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>IdAutor</MudTh>
+        <MudTh>IdCategoria</MudTh>
+        <MudTh>IdEditorial</MudTh>
+        <MudTh>Nombre</MudTh>
+        <MudTh>FechaLanzamiento</MudTh>
+        <MudTh>Idioma</MudTh>
+        <MudTh>Paginas</MudTh>
+        <MudTh>Descripcion</MudTh>
+        <MudTh>Descripcion2</MudTh>
+        <MudTh>ImagenPortada</MudTh>
+        <MudTh>LinkDescarga</MudTh>
+        <MudTh>ImagenIntroduccion</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Autor">@context.Autor.Seudonimo</MudTd>
+        <MudTd DataLabel="Categoria">@context.Categoria.Nombre</MudTd>
+        <MudTd DataLabel="Editorial">@context.Editorial.Nombre</MudTd>
+        <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
+        <MudTd DataLabel="FechaLanzamiento">@context.FechaLanzamiento</MudTd>
+        <MudTd DataLabel="Idioma">@context.Idioma</MudTd>
+        <MudTd DataLabel="Paginas">@context.Paginas</MudTd>
+        <MudTd DataLabel="Descripcion">@context.Descripcion</MudTd>
+        <MudTd DataLabel="Descripcion2">@context.Descripcion2</MudTd>
+        <MudTd DataLabel="ImagenPortada">@context.ImagenPortada</MudTd>
+        <MudTd DataLabel="LinkDescarga">@context.LinkDescarga</MudTd>
+        <MudTd DataLabel="ImagenIntroduccion">@context.ImagenIntroduccion</MudTd>
+        <MudTd>
+            <MudButton Link="@($"/libro/editar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Tertiary"
+                       Class="text-center">Editar</MudButton>
+            <MudButton Link="@($"/libro/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning"
+                       Class="text-center">Eliminar</MudButton>
+        </MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>
 
 @code {
+    private IEnumerable<Libro> libros = new List<Libro>();
+    private string searchText = "";
+    private Libro libro = new Libro();
 
+    protected override async Task OnInitializedAsync()
+    {
+        await getAll();
+    }
+
+    private async Task getAll()
+    {
+        var httpResponse = await httpClient.PostAsJsonAsync("libro/buscar", libro);
+        string respString = await httpResponse.Content.ReadAsStringAsync();
+        libros = JsonSerializer.Deserialize<IEnumerable<Libro>>(respString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+
+    private void goAdd()
+    {
+        NavigationManager.NavigateTo("libro/agregar");
+    }
 }

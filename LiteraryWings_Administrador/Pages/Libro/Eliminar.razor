@@ -1,5 +1,120 @@
-﻿<h3>Eliminar</h3>
+﻿@page "/libro/eliminar/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService _localStorageService
+
+<MudText Typo="Typo.h2" Class="ml">Eliminar Libros</MudText>
+
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <EditForm Model="libro" OnValidSubmit="OnValidSubmit">
+                <DataAnnotationsValidator />
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField Label="Nombre" @bind-Value="libro.Nombre" For="@(() => libro.Nombre)" />
+                        <MudSelect Variant="Variant.Outlined" Label="Autor" AnchorOrigin="Origin.BottomCenter"
+                                   @bind-Value="libro.IdAutor" For="@(() => libro.IdAutor)">
+                            @foreach (var item in autores)
+                            {
+                                <MudSelectItem Value="@item.Id">@item.Seudonimo</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudSelect Variant="Variant.Outlined" Label="Categoria" AnchorOrigin="Origin.BottomCenter"
+                                   @bind-Value="libro.IdCategoria" For="@(() => libro.IdCategoria)">
+                            @foreach (var item in categorias)
+                            {
+                                <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudSelect Variant="Variant.Outlined" Label="Editorial" AnchorOrigin="Origin.BottomCenter"
+                                   @bind-Value="libro.IdEditorial" For="@(() => libro.IdEditorial)">
+                            @foreach (var item in editoriales)
+                            {
+                                <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
+                            }
+                        </MudSelect>
+                        <MudTextField Label="FechaLanzamiento" @bind-Value="libro.FechaLanzamiento" For="@(() => libro.FechaLanzamiento)" />
+                        <MudTextField Label="Idioma" @bind-Value="libro.Idioma" For="@(() => libro.Idioma)" />
+                        <MudTextField Label="Paginas" @bind-Value="libro.Paginas" For="@(() => libro.Paginas)" />
+                        <MudTextField Label="Descripcion" @bind-Value="libro.Descripcion" For="@(() => libro.Descripcion)" />
+                        <MudTextField Label="Descripcion2" @bind-Value="libro.Descripcion2" For="@(() => libro.Descripcion2)" />
+                        <MudTextField Label="ImagenPortada" @bind-Value="libro.ImagenPortada" For="@(() => libro.ImagenPortada)" />
+                        <MudTextField Label="LinkDescarga" @bind-Value="libro.LinkDescarga" For="@(() => libro.LinkDescarga)" />
+                        <MudTextField Label="ImagenIntroduccion" @bind-Value="libro.ImagenIntroduccion" For="@(() => libro.ImagenIntroduccion)" />
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </EditForm>
+            @if (showLeaveAlert)
+            {
+                <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
+            }
+        </MudPaper>
+    </MudItem>
+</MudGrid>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
 
+    private IEnumerable<Autor> autores = new List<Autor>();
+    private IEnumerable<Categoria> categorias = new List<Categoria>();
+    private IEnumerable<Editorial> editoriales = new List<Editorial>();
+    private bool showLeaveAlert = false;
+    Libro libro = new Libro();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Http.DefaultRequestHeaders.Authorization =
+        new AuthenticationHeaderValue("Bearer", await _localStorageService.GetItemAsync<string>("token"));
+        await getAutores();
+        await getCategorias();
+        await getEditoriales();
+
+        var resp = await Http.GetStringAsync("libro/" + id);
+        libro = JsonSerializer.Deserialize<Libro>(resp, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+
+    private async Task OnValidSubmit(EditContext context)
+    {
+        await eliminar();
+    }
+
+    private async Task eliminar()
+    {
+        var httpResponse = await Http.DeleteAsync("libro/" + libro.Id);
+
+        if (!(httpResponse.StatusCode == System.Net.HttpStatusCode.OK))
+        {
+            showLeaveAlert = true;
+        }
+        else
+        {
+            NavigationManager.NavigateTo("libro/index");
+        }
+    }
+
+    private void CloseMe(bool value)
+    {
+        showLeaveAlert = false;
+    }
+
+    private async Task getAutores()
+    {
+        var httpResponse = await Http.GetStringAsync("autor");
+        autores = JsonSerializer.Deserialize<IEnumerable<Autor>>(httpResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+    private async Task getCategorias()
+    {
+        var httpResponse = await Http.GetStringAsync("categoria");
+        categorias = JsonSerializer.Deserialize<IEnumerable<Categoria>>(httpResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+    private async Task getEditoriales()
+    {
+        var httpResponse = await Http.GetStringAsync("editorial");
+        editoriales = JsonSerializer.Deserialize<IEnumerable<Editorial>>(httpResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
 }
