@@ -2,49 +2,53 @@
 @inject HttpClient httpClient
 @inject NavigationManager NavigationManager
 
-<MudText Typo="Typo.h2" Class="ml">Libros</MudText>
+<h1 class="Titulo-Libro">Colección de Libros</h1>
+@*<MudText Typo="Typo.h2" Class="ml">Libros</MudText>*@
 
 <MudTable Items="@libros" Hover="true" Bordered="true" Striped="true">
     <ToolBarContent>
         <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
         <MudSpacer />
-        <MudTextField @bind-Value="searchText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
-    <HeaderContent>
-        <MudTh>Id</MudTh>
-        <MudTh>IdAutor</MudTh>
-        <MudTh>IdCategoria</MudTh>
-        <MudTh>IdEditorial</MudTh>
-        <MudTh>Nombre</MudTh>
-        <MudTh>FechaLanzamiento</MudTh>
-        <MudTh>Idioma</MudTh>
-        <MudTh>Paginas</MudTh>
-        <MudTh>Descripcion</MudTh>
-        <MudTh>Descripcion2</MudTh>
-        <MudTh>ImagenPortada</MudTh>
-        <MudTh>LinkDescarga</MudTh>
-        <MudTh>ImagenIntroduccion</MudTh>
-    </HeaderContent>
+
     <RowTemplate>
-        <MudTd DataLabel="Id">@context.Id</MudTd>
-        <MudTd DataLabel="Autor">@context.Autor.Seudonimo</MudTd>
-        <MudTd DataLabel="Categoria">@context.Categoria.Nombre</MudTd>
-        <MudTd DataLabel="Editorial">@context.Editorial.Nombre</MudTd>
-        <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
-        <MudTd DataLabel="FechaLanzamiento">@context.FechaLanzamiento</MudTd>
-        <MudTd DataLabel="Idioma">@context.Idioma</MudTd>
-        <MudTd DataLabel="Paginas">@context.Paginas</MudTd>
-        <MudTd DataLabel="Descripcion">@context.Descripcion</MudTd>
-        <MudTd DataLabel="Descripcion2">@context.Descripcion2</MudTd>
-        <MudTd DataLabel="ImagenPortada">@context.ImagenPortada</MudTd>
-        <MudTd DataLabel="LinkDescarga">@context.LinkDescarga</MudTd>
-        <MudTd DataLabel="ImagenIntroduccion">@context.ImagenIntroduccion</MudTd>
-        <MudTd>
-            <MudButton Link="@($"/libro/editar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Tertiary"
-                       Class="text-center">Editar</MudButton>
-            <MudButton Link="@($"/libro/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning"
-                       Class="text-center">Eliminar</MudButton>
-        </MudTd>
+        <div class="row">
+            <div class="col-md-4">
+                <a class="btn" href="@($"/libro/editar/{context.Id}")">
+                    <div class="card1">
+                        <div class="card-content">
+                            <div class="card-front contenedor">
+                                <img class="Ajustarimagen" src="@context.ImagenPortada" alt="@context.Nombre">
+                                <p class="sub-fechaLanzamiento">
+                                    @context.FechaLanzamiento
+                                </p>
+                            </div>
+                            <div class="card-back contenedor">
+                                <img class="Ajustarimagen" src="@context.ImagenIntroduccion" alt="@context.Nombre">
+                                <div class="fondo row ">
+                                    <div class="movie-description">
+                                        <span class="AtributosLibro ">Descripción:  </span>@context.Descripcion
+                                    </div>
+                                    <div class="genre">
+                                        <span class="AtributosLibro ">Nº Páginas:  </span>@context.Paginas
+                                    </div>
+                                    <div class="back-title">
+                                        <span class="AtributosLibro ">Idioma:  </span>@context.Idioma
+                                    </div>
+                                    <div class="release-date">
+                                        <span class="AtributosLibro ">Fecha de publicación:  </span>@context.FechaLanzamiento
+                                    </div>
+                                </div>
+                            </div>
+                            <MudTd>
+                                <MudButton Link="@($"/libro/editar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Tertiary" Class="text-center">Editar</MudButton>
+                                <MudButton Link="@($"/libro/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning" Class="text-center">Eliminar</MudButton>
+                            </MudTd>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </RowTemplate>
     <PagerContent>
         <MudTablePager />
