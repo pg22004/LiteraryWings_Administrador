@@ -13,8 +13,7 @@
     </div>
 </div>
 
-@*<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
-*@<MudSpacer />
+<MudSpacer />
 
 <div class="row">
     @foreach (var item in libros)
@@ -51,10 +50,10 @@
             </a>
             <div class="ContenedorBotonesAdminpeli">
                 <a href="@($"/libro/eliminar/{item.Id}")">
-                    <button class="btn BotonesAdminlibro Eliminar">Eliminar</button>
+                    <button class="BotonesAdminlibro Eliminar">Eliminar</button>
                 </a>
                 <a href="@($"/libro/editar/{item.Id}")">
-                    <button class="btn BotonesAdminlibro Modificar">Modificar</button>
+                    <button class="BotonesAdminlibro Modificar">Modificar</button>
                 </a>
             </div>
         </div>

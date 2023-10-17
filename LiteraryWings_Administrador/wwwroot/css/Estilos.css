@@ -79,18 +79,14 @@ html, .BodyPrime {
 }
 
 
-/*---------------------------------------------------------Boton Añadir pelicula---------------------------------------------*/
+/*---------------------------------------------------------Boton Añadir Libro---------------------------------------------*/
 .ContenedorBotonAgreLibroAdmin {
     display: flex;
     justify-content: center;
 }
 
-.btn{
-
-}
-
 .BotonAgregarLibro {
-    font-size: 1rem;
+    font-size: 20px;
     padding: 0.8em 2em;
     background-color: #000;
     border: 3px solid var(--amarillo-mostaza);
@@ -212,12 +208,14 @@ html, .BodyPrime {
 }
 
 .BotonesAdminlibro {
-    background: var(--light-red);
+    margin-left: 25px;
+    background: var(--negro);
+    color: var(--blanco);
     font-family: inherit;
     padding: 0.6em 1.3em;
-    font-weight: 900;
-    font-size: 18px;
-    border: 3px solid black;
+    font-weight: 600;
+    font-size: 15px;
+    border: 3px solid var(--amarillo-mostaza);
     border-radius: 0.4em;
     box-shadow: 0.1em 0.1em;
 }
@@ -227,9 +225,21 @@ html, .BodyPrime {
     box-shadow: 0.15em 0.15em;
 }
 
+.Eliminar:hover {
+    background: var(--light-red);
+    color: var(--negro);
+    border: 3px solid var(--negro);
+}
+
 .BotonesAdminlibro:active {
     transform: translate(0.05em, 0.05em);
     box-shadow: 0.05em 0.05em;
+}
+
+.Modificar:hover {
+    background: var(--naranja-claro);
+    color: var(--negro);
+    border: 3px solid var(--negro);
 }
 
 /*-------------------------------------------Diseño de Login--------------------------------------------*/
