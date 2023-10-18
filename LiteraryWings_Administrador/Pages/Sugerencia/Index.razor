@@ -5,11 +5,17 @@
 
 <MudText Typo="Typo.h2" Class="ml">Sugerencias</MudText>
 
+<br />
+<div class="">
+    <a href="/sugerencia/agregar">
+        <button class="button"></button>
+    </a>
+</div>
+<br />
+
 <MudTable Items="@sugerencias" Dense="true" Hover="true" Bordered="true" Striped="true">
     <ToolBarContent>
-        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="goAdd" />
-        <MudSpacer />
-        <MudTextField @bind-Value="searchText" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        <MudSpacer />      
     </ToolBarContent>
     <HeaderContent>
         <MudTh>Id</MudTh>
@@ -23,7 +29,8 @@
         <MudTd DataLabel="Correo">@context.Correo</MudTd>
         <MudTd DataLabel="Comentario">@context.Comentario</MudTd>
         <MudTd>
-            <MudButton Link="@($"/sugerencia/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Outlined" Color="Color.Warning"
+            <MudButton Link="@($"/sugerencia/eliminar/{context.Id}")" SSize="Size.Small" Variant="Variant.Filled" Color="Color.Error"
+                       StartIcon="@Icons.Material.Filled.Delete"
                        Class="text-center">Eliminar</MudButton>
         </MudTd>
     </RowTemplate>

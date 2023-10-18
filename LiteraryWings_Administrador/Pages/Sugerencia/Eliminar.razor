@@ -17,7 +17,12 @@
                         <MudTextField Label="Comentario" @bind-Value="sugerencia.Comentario" For="@(() => sugerencia.Comentario)" Disabled/>
                     </MudCardContent>
                     <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>
+                        <div class="ContenedorBotonesGuardarLibro">
+                            <a href="@($"/sugerencia/index")">
+                                <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
+                            </a>
+                            <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
+                        </div>
                     </MudCardActions>
                 </MudCard>
             </EditForm>

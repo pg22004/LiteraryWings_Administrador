@@ -1,1 +1,44 @@
-﻿
+﻿.button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: rgb(89, 182, 35);
+    border: none;
+    color: white;
+    position: relative;
+    width: 120px;
+    height: 45px;
+    transition: background-color 0.2s ease-in, all 0.15s ease-in;
+}
+
+button::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: "Agregar";
+    width: 120px;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(5px, 5px);
+    background-color: rgb(53, 144, 0);
+    transition: all 0.15s ease-in;
+}
+
+button:hover::after {
+    transform: translate(-5px, -5px);
+}
+
+button:hover {
+    transform: translate(5px, 5px);
+}
+
+button:active::after {
+    background-color: rgb(43, 117, 0);
+}
+
+.text{
+    display:flex;
+    justify-content:center;
+}
+

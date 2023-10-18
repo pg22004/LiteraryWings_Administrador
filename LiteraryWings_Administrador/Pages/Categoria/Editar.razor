@@ -15,7 +15,12 @@
                         <MudTextField Label="Nombre" @bind-Value="categoria.Nombre" For="@(() => categoria.Nombre)" />
                     </MudCardContent>
                     <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Guardar cambios</MudButton>
+                        <div class="ContenedorBotonesGuardarLibro">
+                            <a href="@($"/categoria/index")">
+                                <button class="BotonesAdminlibroAtras Atras">Cancelar</button>
+                            </a>
+                            <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Modificar">Guardar cambios</button>
+                        </div>
                     </MudCardActions>
                 </MudCard>
             </EditForm>
