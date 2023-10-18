@@ -3,44 +3,50 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml">Eliminar Autor</MudText>
 
-<MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudPaper Class="pa-4">
-            <EditForm Model="autor" OnValidSubmit="OnValidSubmit">
-                <DataAnnotationsValidator />
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField Label="Nombre" @bind-Value="autor.Nombre" For="@(() => autor.Nombre)" Disabled />
-                    </MudCardContent>
-                    <MudCardContent>
-                        <MudTextField Label="Apellido" @bind-Value="autor.Apellido" For="@(() => autor.Apellido)" Disabled />
-                    </MudCardContent>
-                    <MudCardContent>
-                        <MudTextField Label="Fecha de nacimiento" @bind-Value="autor.FechaNacimiento" For="@(() => autor.FechaNacimiento)" Disabled />
-                    </MudCardContent>
-                    <MudCardContent>
-                        <MudTextField Label="Imagen del autor" @bind-Value="autor.AutorImagen" For="@(() => autor.AutorImagen)" Disabled />
-                    </MudCardContent>
-                    <MudCardContent>
-                        <MudTextField Label="Nombre artistico" @bind-Value="autor.Seudonimo" For="@(() => autor.Seudonimo)" Disabled />
-                    </MudCardContent>
-                    <MudCardContent>
-                        <MudTextField Label="Nacionalidad" @bind-Value="autor.Nacionalidad" For="@(() => autor.Nacionalidad)" Disabled />
-                    </MudCardContent>
-                    <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>
-                    </MudCardActions>
-                </MudCard>
-            </EditForm>
-            @if (showLeaveAlert)
-            {
-                <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
-            }
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+<h1 class="Titulo-EliminarLibro">Eliminar Autor</h1>
+@*<MudText Typo="Typo.h2" Class="ml">Eliminar Autor</MudText>*@
+
+<div class="Contenedor-Agregar-Editar-Eliminar">
+
+    <EditForm Model="autor" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Nombre" @bind-Value="autor.Nombre" For="@(() => autor.Nombre)" Disabled />
+            </MudCardContent>
+            <MudCardContent>
+                <MudTextField Label="Apellido" @bind-Value="autor.Apellido" For="@(() => autor.Apellido)" Disabled />
+            </MudCardContent>
+            <MudCardContent>
+                <MudTextField Label="Fecha de nacimiento" @bind-Value="autor.FechaNacimiento" For="@(() => autor.FechaNacimiento)" Disabled />
+            </MudCardContent>
+            <MudCardContent>
+                <MudTextField Label="Imagen del autor" @bind-Value="autor.AutorImagen" For="@(() => autor.AutorImagen)" Disabled />
+            </MudCardContent>
+            <MudCardContent>
+                <MudTextField Label="Nombre artistico" @bind-Value="autor.Seudonimo" For="@(() => autor.Seudonimo)" Disabled />
+            </MudCardContent>
+            <MudCardContent>
+                <MudTextField Label="Nacionalidad" @bind-Value="autor.Nacionalidad" For="@(() => autor.Nacionalidad)" Disabled />
+            </MudCardContent>
+            <MudCardActions>
+                <div class="ContenedorBotonesGuardarLibro">
+                    <a href="@($"/autor/index")">
+                        <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
+                    </a>
+                    <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
+                </div>
+                @*<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>*@
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+    @if (showLeaveAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
+    }
+
+</div>
 
 @code {
     [Parameter]
