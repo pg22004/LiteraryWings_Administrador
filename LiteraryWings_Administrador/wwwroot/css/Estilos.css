@@ -61,23 +61,17 @@ html, .BodyPrime {
     }
 }
 
-.Titulo-Bienvenida, .Titulo-Autores,
-.Titulo-SugerenciaDetalles, .Titulo-Sugerencia,
-.Titulo-Categorias, .Titulo-Editoriales,
-.Titulo-Libro {
+
+.Titulo-Libro, .Titulo-AgregarLibro,
+.Titulo-EditarLibro, .Titulo-EliminarLibro {
     text-align: center;
     font-weight: bold;
 }
 
-.Titulo-Detalles-Imagenes, .Titulo-Galeria-Portada {
-    font-size: 35px;
-    font-weight: 900;
-    color: black;
-    margin-bottom: 20px;
-    line-height: 1.5em;
-    text-align: center;
+.Contenedor-Agregar-Editar-Eliminar {
+    display: flex;
+    justify-content: center;
 }
-
 
 /*---------------------------------------------------------Boton Añadir Libro---------------------------------------------*/
 .ContenedorBotonAgreLibroAdmin {
@@ -101,6 +95,74 @@ html, .BodyPrime {
     transform: translate(5px, -5px);
 }
 
+.Agregar:hover {
+    background: var(--verde-cian);
+    color: var(--negro);
+    border: 3px solid var(--negro);
+    box-shadow: -5px 5px 0px 0px var(--negro);
+}
+
+/*-------------------------------------Diseño de Agregar Libro------------------------------------*/
+.ContenedorBotonesGuardarLibro {
+}
+
+.BotonesAdminlibroGuardar {
+    margin-left: 200px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 600;
+    font-size: 15px;
+    border: 3px solid var(--amarillo-mostaza);
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+}
+
+    .BotonesAdminlibroGuardar:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+    }
+
+.Guardar:hover {
+    background: var(--verde-cian);
+    color: var(--negro);
+    border: 3px solid var(--negro);
+}
+
+.Cancelar:hover {
+    background: var(--amarillo-mostaza);
+    color: var(--negro);
+    border: 3px solid var(--negro);
+}
+
+/*-------------------------------------Diseño de boton atras de Libros------------------------------------*/
+.ContenedorBotonesGuardarLibro {
+}
+
+.BotonesAdminlibroAtras {
+    margin-left: 25px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 600;
+    font-size: 15px;
+    border: 3px solid var(--amarillo-mostaza);
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+}
+
+    .BotonesAdminlibroAtras:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+    }
+
+.Atras:hover {
+    background: var(--light-red);
+    color: var(--negro);
+    border: 3px solid var(--negro);
+}
 
 /*-------------------------------------Diseño de cuadro de Libros------------------------------------*/
 .card1 {

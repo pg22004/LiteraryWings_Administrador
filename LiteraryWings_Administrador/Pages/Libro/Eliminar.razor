@@ -3,58 +3,63 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml">Eliminar Libros</MudText>
+<h1 class="Titulo-EliminarLibro">Agrega un Nuevo Libro</h1>
+@*<MudText Typo="Typo.h2" Class="ml">Eliminar Libros</MudText>*@
 
-<MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudPaper Class="pa-4">
-            <EditForm Model="libro" OnValidSubmit="OnValidSubmit">
-                <DataAnnotationsValidator />
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField Label="Nombre" @bind-Value="libro.Nombre" For="@(() => libro.Nombre)" Disabled />
-                        <MudSelect Variant="Variant.Outlined" Label="Autor" AnchorOrigin="Origin.BottomCenter"
-                        @bind-Value="libro.IdAutor" For="@(() => libro.IdAutor)" Disabled>
-                            @foreach (var item in autores)
-                            {
-                                <MudSelectItem Value="@item.Id">@item.Seudonimo</MudSelectItem>
-                            }
-                        </MudSelect>
-                        <MudSelect Variant="Variant.Outlined" Label="Categoria" AnchorOrigin="Origin.BottomCenter"
-                        @bind-Value="libro.IdCategoria" For="@(() => libro.IdCategoria)" Disabled>
-                            @foreach (var item in categorias)
-                            {
-                                <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
-                            }
-                        </MudSelect>
-                        <MudSelect Variant="Variant.Outlined" Label="Editorial" AnchorOrigin="Origin.BottomCenter"
-                        @bind-Value="libro.IdEditorial" For="@(() => libro.IdEditorial)" Disabled>
-                            @foreach (var item in editoriales)
-                            {
-                                <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
-                            }
-                        </MudSelect>
-                        <MudTextField Label="FechaLanzamiento" @bind-Value="libro.FechaLanzamiento" For="@(() => libro.FechaLanzamiento)" Disabled />
-                        <MudTextField Label="Idioma" @bind-Value="libro.Idioma" For="@(() => libro.Idioma)" Disabled />
-                        <MudTextField Label="Paginas" @bind-Value="libro.Paginas" For="@(() => libro.Paginas)" Disabled />
-                        <MudTextField Label="Descripcion" @bind-Value="libro.Descripcion" For="@(() => libro.Descripcion)" Disabled />
-                        <MudTextField Label="Descripcion2" @bind-Value="libro.Descripcion2" For="@(() => libro.Descripcion2)" Disabled />
-                        <MudTextField Label="ImagenPortada" @bind-Value="libro.ImagenPortada" For="@(() => libro.ImagenPortada)" Disabled />
-                        <MudTextField Label="LinkDescarga" @bind-Value="libro.LinkDescarga" For="@(() => libro.LinkDescarga)" Disabled />
-                        <MudTextField Label="ImagenIntroduccion" @bind-Value="libro.ImagenIntroduccion" For="@(() => libro.ImagenIntroduccion)" Disabled />
-                    </MudCardContent>
-                    <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>
-                    </MudCardActions>
-                </MudCard>
-            </EditForm>
-            @if (showLeaveAlert)
-            {
-                <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
-            }
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+<div class="Contenedor-Agregar-Editar-Eliminar">
+
+    <EditForm Model="libro" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Nombre" @bind-Value="libro.Nombre" For="@(() => libro.Nombre)" Disabled />
+                <MudSelect Variant="Variant.Outlined" Label="Autor" AnchorOrigin="Origin.BottomCenter"
+                           @bind-Value="libro.IdAutor" For="@(() => libro.IdAutor)" Disabled>
+                    @foreach (var item in autores)
+                    {
+                        <MudSelectItem Value="@item.Id">@item.Seudonimo</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudSelect Variant="Variant.Outlined" Label="Categoria" AnchorOrigin="Origin.BottomCenter"
+                           @bind-Value="libro.IdCategoria" For="@(() => libro.IdCategoria)" Disabled>
+                    @foreach (var item in categorias)
+                    {
+                        <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudSelect Variant="Variant.Outlined" Label="Editorial" AnchorOrigin="Origin.BottomCenter"
+                           @bind-Value="libro.IdEditorial" For="@(() => libro.IdEditorial)" Disabled>
+                    @foreach (var item in editoriales)
+                    {
+                        <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudTextField Label="FechaLanzamiento" @bind-Value="libro.FechaLanzamiento" For="@(() => libro.FechaLanzamiento)" Disabled />
+                <MudTextField Label="Idioma" @bind-Value="libro.Idioma" For="@(() => libro.Idioma)" Disabled />
+                <MudTextField Label="Paginas" @bind-Value="libro.Paginas" For="@(() => libro.Paginas)" Disabled />
+                <MudTextField Label="Descripcion" @bind-Value="libro.Descripcion" For="@(() => libro.Descripcion)" Disabled />
+                <MudTextField Label="Descripcion2" @bind-Value="libro.Descripcion2" For="@(() => libro.Descripcion2)" Disabled />
+                <MudTextField Label="ImagenPortada" @bind-Value="libro.ImagenPortada" For="@(() => libro.ImagenPortada)" Disabled />
+                <MudTextField Label="LinkDescarga" @bind-Value="libro.LinkDescarga" For="@(() => libro.LinkDescarga)" Disabled />
+                <MudTextField Label="ImagenIntroduccion" @bind-Value="libro.ImagenIntroduccion" For="@(() => libro.ImagenIntroduccion)" Disabled />
+            </MudCardContent>
+            <MudCardActions>
+                <div class="ContenedorBotonesGuardarLibro">
+                    <a href="@($"/libro/index")">
+                        <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
+                    </a>
+                    <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
+                </div>
+                @*<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>*@
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+    @if (showLeaveAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
+    }
+
+</div>
 
 @code {
     [Parameter]
