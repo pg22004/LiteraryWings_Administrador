@@ -12,36 +12,36 @@
                 <DataAnnotationsValidator />
                 <MudCard>
                     <MudCardContent>
-                        <MudTextField Label="Nombre" @bind-Value="libro.Nombre" For="@(() => libro.Nombre)" />
+                        <MudTextField Label="Nombre" @bind-Value="libro.Nombre" For="@(() => libro.Nombre)" Disabled />
                         <MudSelect Variant="Variant.Outlined" Label="Autor" AnchorOrigin="Origin.BottomCenter"
-                                   @bind-Value="libro.IdAutor" For="@(() => libro.IdAutor)">
+                        @bind-Value="libro.IdAutor" For="@(() => libro.IdAutor)" Disabled>
                             @foreach (var item in autores)
                             {
                                 <MudSelectItem Value="@item.Id">@item.Seudonimo</MudSelectItem>
                             }
                         </MudSelect>
                         <MudSelect Variant="Variant.Outlined" Label="Categoria" AnchorOrigin="Origin.BottomCenter"
-                                   @bind-Value="libro.IdCategoria" For="@(() => libro.IdCategoria)">
+                        @bind-Value="libro.IdCategoria" For="@(() => libro.IdCategoria)" Disabled>
                             @foreach (var item in categorias)
                             {
                                 <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
                             }
                         </MudSelect>
                         <MudSelect Variant="Variant.Outlined" Label="Editorial" AnchorOrigin="Origin.BottomCenter"
-                                   @bind-Value="libro.IdEditorial" For="@(() => libro.IdEditorial)">
+                        @bind-Value="libro.IdEditorial" For="@(() => libro.IdEditorial)" Disabled>
                             @foreach (var item in editoriales)
                             {
                                 <MudSelectItem Value="@item.Id">@item.Nombre</MudSelectItem>
                             }
                         </MudSelect>
-                        <MudTextField Label="FechaLanzamiento" @bind-Value="libro.FechaLanzamiento" For="@(() => libro.FechaLanzamiento)" />
-                        <MudTextField Label="Idioma" @bind-Value="libro.Idioma" For="@(() => libro.Idioma)" />
-                        <MudTextField Label="Paginas" @bind-Value="libro.Paginas" For="@(() => libro.Paginas)" />
-                        <MudTextField Label="Descripcion" @bind-Value="libro.Descripcion" For="@(() => libro.Descripcion)" />
-                        <MudTextField Label="Descripcion2" @bind-Value="libro.Descripcion2" For="@(() => libro.Descripcion2)" />
-                        <MudTextField Label="ImagenPortada" @bind-Value="libro.ImagenPortada" For="@(() => libro.ImagenPortada)" />
-                        <MudTextField Label="LinkDescarga" @bind-Value="libro.LinkDescarga" For="@(() => libro.LinkDescarga)" />
-                        <MudTextField Label="ImagenIntroduccion" @bind-Value="libro.ImagenIntroduccion" For="@(() => libro.ImagenIntroduccion)" />
+                        <MudTextField Label="FechaLanzamiento" @bind-Value="libro.FechaLanzamiento" For="@(() => libro.FechaLanzamiento)" Disabled />
+                        <MudTextField Label="Idioma" @bind-Value="libro.Idioma" For="@(() => libro.Idioma)" Disabled />
+                        <MudTextField Label="Paginas" @bind-Value="libro.Paginas" For="@(() => libro.Paginas)" Disabled />
+                        <MudTextField Label="Descripcion" @bind-Value="libro.Descripcion" For="@(() => libro.Descripcion)" Disabled />
+                        <MudTextField Label="Descripcion2" @bind-Value="libro.Descripcion2" For="@(() => libro.Descripcion2)" Disabled />
+                        <MudTextField Label="ImagenPortada" @bind-Value="libro.ImagenPortada" For="@(() => libro.ImagenPortada)" Disabled />
+                        <MudTextField Label="LinkDescarga" @bind-Value="libro.LinkDescarga" For="@(() => libro.LinkDescarga)" Disabled />
+                        <MudTextField Label="ImagenIntroduccion" @bind-Value="libro.ImagenIntroduccion" For="@(() => libro.ImagenIntroduccion)" Disabled />
                     </MudCardContent>
                     <MudCardActions>
                         <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Error" Class="ml-auto">Eliminar</MudButton>
