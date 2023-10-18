@@ -1,5 +1,86 @@
-﻿<h3>Index</h3>
+﻿@page "/autor/index"
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService _localStorageService
+
+
+<h1 class="Titulo-Libro">Colección de Libros</h1>
+
+<div class="ContenedorBotonAgreLibroAdmin">
+    <div class="">
+        <a href="/autor/agregar">
+            <button class="BotonAgregarLibro">Agregar autor </button>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+   @foreach (var item in autores)
+   {
+       <div class="col-md-4">
+           <a class="btn" href="@($"/autor/editar/{item.Id}")">
+               <div class="card1">
+                   <div class="card-content">
+                       <div class="card-front contenedor">
+                           <img class="Ajustarimagen" src="@item.AutorImagen" alt="@item.Nombre">
+                       </div>
+                       <div class="card-back contenedor">
+                           <img class="Ajustarimagen" src="@item.AutorImagen" alt="@item.Nombre">
+                           <div class="fondo row ">
+                               <div class="movie-description">
+                                   <span class="AtributosLibro ">Nombre:  </span>@item.Nombre
+                               </div>
+                               <div class="genre">
+                                    <span class="AtributosLibro ">Apellido:  </span>@item.Apellido
+                               </div>
+                               <div class="back-title">
+                                     <span class="AtributosLibro ">Fecha de Nacimiento:  </span>@item.FechaNacimiento
+                               </div>
+                               <div class="release-date">
+                                     <span class="AtributosLibro ">Nombre artistico:  </span>@item.Seudonimo
+                               </div>
+                               <div class="release-date">
+                                      <span class="AtributosLibro ">Nacionalidad:  </span>@item.Nacionalidad
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+           </a>
+           <div class="ContenedorBotonesAdminpeli">
+              <a href="@($"/autor/eliminar/{item.Id}")">
+                  <button class="BotonesAdminlibro Eliminar">Eliminar</button>
+              </a>
+               <a href="@($"/autor/editar/{item.Id}")">
+                   <button class="BotonesAdminlibro Modificar">Modificar</button>
+               </a>
+           </div>
+
+       </div>
+
+   }
+</div>
 
 @code {
+    private IEnumerable<Autor> autores = new List<Autor>();
+    private string searchText = "";
 
+    protected override async Task OnInitializedAsync()
+    {
+        httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", await _localStorageService.GetItemAsync<string>("token"));
+        await getAll();
+    }
+
+    private async Task getAll()
+    {
+        var httpResponse = await httpClient.GetStringAsync("autor");
+        autores = JsonSerializer.Deserialize<IEnumerable<Autor>>(httpResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+
+    private void goAdd()
+    {
+        NavigationManager.NavigateTo("autor/agregar");
+    }
 }
