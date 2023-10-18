@@ -49,7 +49,7 @@
     private async Task eliminar()
     {
 
-        var httpResponse = await Http.DeleteAsync("edotorial/" + editorial.Id);
+        var httpResponse = await Http.DeleteAsync("editorial/" + editorial.Id);
 
         if (!(httpResponse.StatusCode == System.Net.HttpStatusCode.OK))
         {
