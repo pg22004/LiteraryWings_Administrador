@@ -3,14 +3,16 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml text">Editoriales</MudText>
-<br />
+<h1 class="Titulo-Libro">Editoriales</h1>
 
+<br />
+<div class="ContenedorBotonAgregarIli">
     <a href="/editorial/agregar">
-        <button class="button"></button>
+        <button class="button">
+            Agregar
+        </button>
     </a>
-
-<br />
+</div>
 <br />
 
 <MudTable Items="@editoriales" Dense="true" Hover="true" Bordered="true" Striped="true">

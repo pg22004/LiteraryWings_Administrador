@@ -10,10 +10,7 @@
     transition: background-color 0.2s ease-in, all 0.15s ease-in;
 }
 
-button::after {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.ContenedorBotonAgregarIli button::after {
     content: "Agregar";
     width: 120px;
     height: 45px;
@@ -25,20 +22,20 @@ button::after {
     transition: all 0.15s ease-in;
 }
 
-button:hover::after {
+.ContenedorBotonAgregarIli button:hover::after {
     transform: translate(-5px, -5px);
 }
 
-button:hover {
+.ContenedorBotonAgregarIli button:hover {
     transform: translate(5px, 5px);
 }
 
-button:active::after {
+.ContenedorBotonAgregarIli button:active::after {
     background-color: rgb(43, 117, 0);
 }
 
-.text{
-    display:flex;
-    justify-content:center;
+.ContenedorBotonAgregarIli {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-

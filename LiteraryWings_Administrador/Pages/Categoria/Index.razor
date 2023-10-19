@@ -4,20 +4,22 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml text">Categorias</MudText>
+<h1 class="Titulo-Libro">Categorias</h1>
 
 <br />
-    <div class="">
-        <a href="/categoria/agregar">
-        <button class="button"></button>
-        </a>
-    </div>
+<div class="ContenedorBotonAgregarIli">
+    <a href="/categoria/agregar">
+        <button class="button">
+            Agregar
+        </button>
+    </a>
+</div>
 <br />
 
 <MudTable Items="@categorias" Dense="true" Hover="true" Bordered="true" Striped="true">
     <ToolBarContent>
         <MudSpacer />
-       
+
     </ToolBarContent>
     <HeaderContent>
         <MudTh>Id</MudTh>
@@ -32,10 +34,10 @@
 
             <MudButton Link="@($"/categoria/editar/{context.Id}")" Size="Size.Small" Variant="Variant.Filled" Color="Color.Tertiary"
                        StartIcon="@Icons.Material.Filled.EditNote"
-            Class="text-center">Editar</MudButton>
+                       Class="text-center">Editar</MudButton>
             <MudButton Link="@($"/categoria/eliminar/{context.Id}")" Size="Size.Small" Variant="Variant.Filled" Color="Color.Error"
                        StartIcon="@Icons.Material.Filled.Delete"
-            Class="text-center">Eliminar</MudButton>
+                       Class="text-center">Eliminar</MudButton>
         </MudTd>
     </RowTemplate>
     <PagerContent>

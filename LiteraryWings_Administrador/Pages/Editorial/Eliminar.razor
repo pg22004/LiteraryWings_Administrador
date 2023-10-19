@@ -3,34 +3,32 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml">Eliminar Editorial</MudText>
+<h1 class="Titulo-EliminarLibro">Eliminar Editorial</h1>
 
-<MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudPaper Class="pa-4">
-            <EditForm Model="editorial" OnValidSubmit="OnValidSubmit">
-                <DataAnnotationsValidator />
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField Label="Nombre" @bind-Value="editorial.Nombre" For="@(() => editorial.Nombre)" Disabled />
-                    </MudCardContent>
-                    <MudCardActions>
-                        <div class="ContenedorBotonesGuardarLibro">
-                            <a href="@($"/editorial/index")">
-                                <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
-                            </a>
-                            <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
-                        </div>
-                    </MudCardActions>
-                </MudCard>
-            </EditForm>
-            @if (showLeaveAlert)
-            {
-                <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
-            }
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+<div class="Contenedor-Agregar-Editar-Eliminar">
+
+    <EditForm Model="editorial" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Nombre" @bind-Value="editorial.Nombre" For="@(() => editorial.Nombre)" Disabled />
+            </MudCardContent>
+            <MudCardActions>
+                <div class="ContenedorBotonesGuardarLibro">
+                    <a href="@($"/editorial/index")">
+                        <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
+                    </a>
+                    <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
+                </div>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+    @if (showLeaveAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
+    }
+
+</div>
 
 @code {
     [Parameter]

@@ -3,36 +3,34 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService _localStorageService
 
-<MudText Typo="Typo.h2" Class="ml">Eliminar Sugerencia</MudText>
+<h1 class="Titulo-EliminarLibro">Eliminar Sugerencia</h1>
 
-<MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudPaper Class="pa-4">
-            <EditForm Model="sugerencia" OnValidSubmit="OnValidSubmit">
-                <DataAnnotationsValidator />
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField Label="Nombre" @bind-Value="sugerencia.Nombre" For="@(() => sugerencia.Nombre)" Disabled />
-                        <MudTextField Label="Correo" @bind-Value="sugerencia.Correo" For="@(() => sugerencia.Correo)" Disabled />
-                        <MudTextField Label="Comentario" @bind-Value="sugerencia.Comentario" For="@(() => sugerencia.Comentario)" Disabled/>
-                    </MudCardContent>
-                    <MudCardActions>
-                        <div class="ContenedorBotonesGuardarLibro">
-                            <a href="@($"/sugerencia/index")">
-                                <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
-                            </a>
-                            <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
-                        </div>
-                    </MudCardActions>
-                </MudCard>
-            </EditForm>
-            @if (showLeaveAlert)
-            {
-                <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
-            }
-        </MudPaper>
-    </MudItem>
-</MudGrid>
+<div class="Contenedor-Agregar-Editar-Eliminar">
+
+    <EditForm Model="sugerencia" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="Nombre" @bind-Value="sugerencia.Nombre" For="@(() => sugerencia.Nombre)" Disabled />
+                <MudTextField Label="Correo" @bind-Value="sugerencia.Correo" For="@(() => sugerencia.Correo)" Disabled />
+                <MudTextField Label="Comentario" @bind-Value="sugerencia.Comentario" For="@(() => sugerencia.Comentario)" Disabled />
+            </MudCardContent>
+            <MudCardActions>
+                <div class="ContenedorBotonesGuardarLibro">
+                    <a href="@($"/sugerencia/index")">
+                        <button class="BotonesAdminlibroAtras Cancelar">Cancelar</button>
+                    </a>
+                    <button Type="Submit" Variant="Variant.Filled" Class="BotonesAdminlibroGuardar Eliminar">Eliminar</button>
+                </div>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+    @if (showLeaveAlert)
+    {
+        <MudAlert Severity="Severity.Error" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseMe(true))">Ocurrió un problema.</MudAlert>
+    }
+
+</div>
 
 @code {
     [Parameter]
