@@ -13,8 +13,6 @@
     </div>
 </div>
 
-<MudSpacer />
-
 <div class="row">
     @foreach (var item in libros)
     {
@@ -47,6 +45,9 @@
                         </div>
                     </div>
                 </div>
+                <h1 class="title">
+                    @item.Nombre
+                </h1>
             </a>
             <div class="ContenedorBotonesAdminpeli">
                 <a href="@($"/libro/eliminar/{item.Id}")">
