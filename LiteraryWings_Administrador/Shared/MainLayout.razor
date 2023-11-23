@@ -6,13 +6,13 @@
 <MudDialogProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1" Class="grey darken-4">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <a href="/home"><img class="Logo" src="/images/LogoAdminS.png" alt="Logo"></a>
+    <MudAppBar Elevation="1" Class="purple lighten-3">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <a href="/home"><img class="Logo" src="/images/logos.png" alt="Logo"></a>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Inherit" Edge="Edge.End" OnClick="@((e) => logout())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Dark" Edge="Edge.End" OnClick="@((e) => logout())" />
     </MudAppBar>
-    <MudDrawer Class="pa-4 shades grey darken-4 shades-text text-white" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+    <MudDrawer Class="pa-4 shades purple lighten-3 shades-text text-white" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu></NavMenu>
     </MudDrawer>
     <MudMainContent>

@@ -2,7 +2,6 @@
 
 * {
     margin: 0;
-    font-family: "poppins";
     padding: 0;
     box-sizing: border-box;
 }
@@ -36,7 +35,7 @@
 /*---------------------------------------------Diseños Generales--------------------------------------------*/
 
 html, .BodyPrime {
-    background: var(--mostaza-palido);
+    background-color: #E1BEE7;
 }
 
 .Logo {
@@ -64,6 +63,9 @@ html, .BodyPrime {
 
 .Titulo-Libro, .Titulo-AgregarLibro,
 .Titulo-EditarLibro, .Titulo-EliminarLibro {
+    font-size: 350%;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
     text-align: center;
     font-weight: bold;
 }
